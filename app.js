@@ -39,6 +39,12 @@ function refillAnswerDeck() {
   state.answerIndex = 0;
 }
 
+function setSourceLink(link, source) {
+  link.hidden = !source;
+  if (source) link.href = source;
+  else link.removeAttribute("href");
+}
+
 function showNextAnswer(initial = false) {
   if (!state.answerDeck.length || state.answerIndex >= state.answerDeck.length) refillAnswerDeck();
   const card = $("#answerCard");
@@ -52,7 +58,7 @@ function showNextAnswer(initial = false) {
     $("#answerTitle").textContent = state.currentAnswer.title;
     $("#answerText").textContent = state.currentAnswer.text;
     $("#answerAttribution").textContent = state.currentAnswer.attribution;
-    $("#answerSource").href = state.currentAnswer.source;
+    setSourceLink($("#answerSource"), state.currentAnswer.source);
     state.answerIndex += 1;
     card.classList.remove("switching");
     card.classList.remove("arrival");
@@ -119,11 +125,10 @@ function answerQuiz(guess) {
   const sourceLink = $("#resultSource");
   if (state.currentQuiz.real) {
     $("#resultExplanation").textContent = `זהו תירוץ אמיתי המיוחס ל${state.currentQuiz.attribution}.`;
-    sourceLink.href = state.currentQuiz.source;
-    sourceLink.hidden = false;
+    setSourceLink(sourceLink, state.currentQuiz.source);
   } else {
     $("#resultExplanation").textContent = state.currentQuiz.explanation;
-    sourceLink.hidden = true;
+    setSourceLink(sourceLink);
   }
   $("#nextQuestion").hidden = false;
 }
