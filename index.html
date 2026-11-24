@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#132f2b" />
+    <meta name="description" content="עשרות תירוצים לקושיית הבית יוסף על שמונת ימי חנוכה — וגם משחק אמת או המצאה." />
+    <title>השמן השמיני — קושיית הבית יוסף</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="קושיית הבית יוסף — דף הבית">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="mini-flame"></span>
+        </span>
+        <span>קושיית הבית יוסף</span>
+      </a>
+      <button class="about-button" id="aboutButton" type="button" aria-haspopup="dialog">
+        על הקושיה
+      </button>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="mainTitle">
+        <div class="eyebrow"><span></span> חידה בת יותר מ־500 שנה</div>
+        <h1 id="mainTitle">שמונה ימים.<br /><em>אבל למה?</em></h1>
+        <p class="hero-copy">
+          בפך היה שמן ליום אחד, והנס נמשך עוד שבעה. אז למה חוגגים שמונה?
+          גלו איך ניסו חכמי הדורות לפתור את קושיית הבית יוסף.
+        </p>
+
+        <div class="menorah" aria-hidden="true">
+          <div class="candles" id="heroCandles"></div>
+          <div class="menorah-base"></div>
+        </div>
+      </section>
+
+      <section class="experience" aria-label="בחירת מצב">
+        <div class="mode-switcher" role="tablist" aria-label="מצבי משחק">
+          <button class="mode-tab active" id="discoverTab" role="tab" aria-selected="true" aria-controls="discoverPanel" data-mode="discover">
+            <span class="tab-icon">✦</span>
+            תירוץ בהפתעה
+          </button>
+          <button class="mode-tab" id="gameTab" role="tab" aria-selected="false" aria-controls="gamePanel" data-mode="game">
+            <span class="tab-icon">?</span>
+            אמת או המצאה
+          </button>
+        </div>
+
+        <section class="mode-panel active" id="discoverPanel" role="tabpanel" aria-labelledby="discoverTab">
+          <div class="panel-heading">
+            <div>
+              <span class="panel-kicker">מאגר התירוצים</span>
+              <h2>הדליקו תירוץ חדש</h2>
+            </div>
+              <span class="counter" id="answerCounter">1 / 50</span>
+          </div>
+
+          <article class="answer-card" id="answerCard" aria-live="polite">
+            <div class="card-topline">
+              <span class="answer-number" id="answerNumber">תירוץ #01</span>
+              <button class="share-button" id="shareButton" type="button" aria-label="שיתוף התירוץ" title="שיתוף התירוץ">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a3 3 0 1 0-2.83-4A3 3 0 0 0 15 5c0 .22.02.43.07.63L8.9 9.2a3 3 0 1 0 0 5.6l6.17 3.57A3 3 0 0 0 15 19a3 3 0 1 0 .9-2.14l-6.18-3.57c.18-.84.18-1.74 0-2.58l6.18-3.57A3 3 0 0 0 18 8Z"/></svg>
+              </button>
+            </div>
+            <h3 id="answerTitle"></h3>
+            <p id="answerText"></p>
+            <footer class="source-row">
+              <span class="source-label">מקור</span>
+              <strong id="answerAttribution"></strong>
+              <a id="answerSource" href="#" target="_blank" rel="noreferrer">לעיון במקור <span aria-hidden="true">↗</span></a>
+            </footer>
+          </article>
+
+          <button class="primary-button" id="nextAnswer" type="button">
+            <span>תירוץ אחר</span>
+            <span class="button-flame" aria-hidden="true"></span>
+          </button>
+          <p class="deck-note">בלי חזרות — עד שעוברים על כל המאגר</p>
+        </section>
+
+        <section class="mode-panel" id="gamePanel" role="tabpanel" aria-labelledby="gameTab" hidden>
+          <div class="game-header">
+            <div>
+              <span class="panel-kicker">בדקו את החוש התורני שלכם</span>
+              <h2>אמיתי או שהמצאנו?</h2>
+            </div>
+            <div class="score-pill" aria-label="ניקוד">
+              <span>ניקוד</span>
+              <strong id="score">0</strong>
+              <span>/</span>
+              <span id="attempts">0</span>
+            </div>
+          </div>
+
+          <article class="quiz-card" id="quizCard" aria-live="polite">
+            <span class="quiz-label">התירוץ המוצע</span>
+            <h3 id="quizTitle"></h3>
+            <p id="quizText"></p>
+            <div class="quiz-actions" id="quizActions">
+              <button class="guess-button true" type="button" data-guess="true">
+                <span aria-hidden="true">✓</span> תירוץ אמיתי
+              </button>
+              <button class="guess-button false" type="button" data-guess="false">
+                <span aria-hidden="true">×</span> המצאה
+              </button>
+            </div>
+            <div class="result-box" id="resultBox" hidden>
+              <div class="result-heading">
+                <span class="result-icon" id="resultIcon"></span>
+                <strong id="resultTitle"></strong>
+              </div>
+              <p id="resultExplanation"></p>
+              <a id="resultSource" href="#" target="_blank" rel="noreferrer">למקור התירוץ <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <button class="primary-button" id="nextQuestion" type="button" hidden>
+            <span>לשאלה הבאה</span>
+            <span aria-hidden="true">←</span>
+          </button>
+          <button class="reset-score" id="resetScore" type="button">איפוס ניקוד</button>
+        </section>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>נבנה באהבה לאור נרות חנוכה</span>
+      <span class="footer-dot">•</span>
+      <button id="sourcesButton" type="button">מקורות ומתודולוגיה</button>
+    </footer>
+
+    <dialog class="info-dialog" id="infoDialog">
+      <button class="dialog-close" id="dialogClose" type="button" aria-label="סגירה">×</button>
+      <div class="dialog-flame" aria-hidden="true"><span></span></div>
+      <span class="panel-kicker">קושיית הבית יוסף</span>
+      <h2>למה שמונה ימים?</h2>
+      <p>
+        במסכת שבת מסופר שנמצא פך שמן טהור שהספיק ליום אחד, ונעשה בו נס והוא דלק שמונה ימים.
+        רבי יוסף קארו שאל: אם ליום הראשון כבר היה שמן בדרך הטבע, הנס היה רק שבעה ימים — אז מדוע נקבע החג לשמונה?
+      </p>
+      <p>
+        המאגר כאן מאחד תירוצים ייחודיים משני ליקוטים, וכל תירוץ נוסח מחדש במשפט אחד.
+        במשחק, “אמיתי” פירושו תירוץ שמופיע במקורות שנבדקו; ההמצאות נכתבו במיוחד למשחק ואינן מיוחסות לחכם כלשהו.
+      </p>
+      <div class="dialog-sources">
+        <a href="https://www.dirshu.co.il/%D7%9E%D7%90%D7%95%D7%AA-%D7%AA%D7%99%D7%A8%D7%95%D7%A6%D7%99%D7%9D-%D7%A2%D7%9C-%D7%A7%D7%95%D7%A9%D7%99%D7%99%D7%AA-%D7%94%D7%91%D7%99%D7%AA-%D7%99%D7%95%D7%A1%D7%A3-%D7%9E%D7%92%D7%93%D7%95%D7%9C/" target="_blank" rel="noreferrer">לקט “דרשו” <span>↗</span></a>
+        <a href="https://www.yeshiva.org.il/wiki/index.php/%D7%A7%D7%95%D7%A9%D7%99%D7%99%D7%AA_%D7%91%D7%99%D7%AA_%D7%99%D7%95%D7%A1%D7%A3_%D7%A2%D7%9C_%D7%97%D7%A0%D7%95%D7%9B%D7%94" target="_blank" rel="noreferrer">ערך ויקישיבה <span>↗</span></a>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
